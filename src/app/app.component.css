@@ -1,0 +1,74 @@
+.container {
+    background-image: url("../assets/images/coins.jpg");
+    background-size: cover;
+}
+
+.headerdiv {
+    background-color: #770;
+}
+
+header {
+    height: 100px;
+    background-image: url("../assets/images/dollar.png");
+    background-size: 175px;
+    border-bottom: 5px solid #551;
+}
+
+footer {
+    padding: 15px;
+    /* height: 50px; */
+    text-align: center;
+    background-color: #332;
+    color: #def;
+}
+
+.appmain {
+    min-height: 80vh;
+    background-color: #ea4;
+    opacity: 0.9;
+    max-width: 1100px;
+    margin: auto;
+    padding: 15px;
+}
+
+.appmain nav {
+    max-width: 550px;
+    margin: auto;
+}
+
+.button {
+    box-shadow: inset 0px 1px 0px 0px #ffffff;
+    background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+    /* background-image: url("../assets/images/coins.jpg");
+    background-size: contain; */
+    background-color: #ffffff;
+    border-radius: 6px;
+    border: 1px solid #dcdcdc;
+    display: inline-block;
+    cursor: pointer;
+    color: #666666;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 12px 36px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #ffffff;
+    outline: 0;
+    margin-right: 15px;
+}
+.activebutton {
+    box-shadow: inset 0px 1px 0px 0px #dcecfb;
+    background: linear-gradient(to bottom, #eed4a5 5%, #ffe4b5 100%);
+    /* background-color: #dbfa1d; */
+    border-radius: 6px;
+    border: 1px solid #bbf314;
+    display: inline-block;
+    cursor: pointer;
+    color: #222;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #8ecc12;
+    outline: 0;
+}
