@@ -21,6 +21,8 @@ import { TransactionComponent } from './transaction/transaction.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    FormsModule,
     RouterModule.forRoot([
         {path: 'home', component: HomeComponent},
         {path: '', redirectTo: '/home', pathMatch: 'full'},

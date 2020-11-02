@@ -4,7 +4,7 @@
 }
 
 .headerdiv {
-    background-color: #770;
+    background-color: #774;
 }
 
 header {
@@ -24,7 +24,7 @@ footer {
 
 .appmain {
     min-height: 80vh;
-    background-color: #ea4;
+    background-color: #fb5;
     opacity: 0.9;
     max-width: 1100px;
     margin: auto;

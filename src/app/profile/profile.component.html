@@ -1,7 +1,34 @@
 <h1>Din profil</h1>
-<p>Du heter ...</p>
-<p>Din epost: ...</p>
-<p>Ditt konto: </p>
-<p>Din historik</p>
+<h2>Kontouppgifter</h2>
+<ul>
+    <li><strong>Din epost</strong>: {{ adat.email }}</li>
+    <li><strong>Kontot skapades</strong>: {{ adat.created }}</li>
+    <li><strong>Dina valutor</strong></li>
+</ul>
+
+<table>
+    <tr>
+        <th><img src="../../assets/images/flag_se.png" alt="Swedish flag"></th>
+        <th><img src="../../assets/images/flag_eu.png" alt="EU flag"></th>
+        <th><img src="../../assets/images/flag_uk.png" alt="British flag"></th>
+        <th><img src="../../assets/images/flag_us.png" alt="US flag"></th>
+        <th><img src="../../assets/images/flag_ch.png" alt="Swiss flag"></th>
+    </tr>
+    <tr>
+        <td><strong>{{ adat.sek }}</strong> SEK</td>
+        <td><strong>{{ adat.eur }}</strong> EUR</td>
+        <td><strong>{{ adat.gbp }}</strong> GBP</td>
+        <td><strong>{{ adat.usd }}</strong> USD</td>
+        <td><strong>{{ adat.chf }}</strong> CHF</td>
+    </tr>
+</table>
+<h2>Historik</h2>
+<table>
+    <tr>
+        <th>Datum</th>
+        <th>Köpt</th>
+        <th>Sålt</th>
+    </tr>
+</table>
 <p>Radera ditt konto</p>
 <p>Betala in pengar</p>

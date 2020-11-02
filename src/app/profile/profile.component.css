@@ -1,0 +1,17 @@
+table {
+    border: solid 2px black;
+}
+
+th {
+    border: solid 2px black;
+}
+
+td {
+    border: solid 2px black;
+    text-align: center;
+}
+
+th img {
+    height: 100px;
+    max-width: 200px;
+}

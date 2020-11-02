@@ -1,4 +1,54 @@
-<h1>Välkommen till Forex</h1>
+<div ng-app="myApp" ng-controller="myCtrl">
+    <h1>Varmt välkommen till Forex-trading!!!</h1>
 
-<p>För nuvarande har vi ... användare.</p>
-<p>De allra flesta som ägnar sig åt hasardspel blir av med sina pengar. Tänk på detta innan du bestämmer dig för att använda dig av våra tjänster.</p>
+    <p><strong>Varför ska du använda våra tjänster?</strong></p>
+    <ul>
+        <li>Du som registrerar dig får ett startkapital på 1000 kr.</li>
+        <li>Som inloggad användare kan du göra ytterligare inbetalningar.</li>
+        <li>Hos oss kan du köpa och sälja SEK, EUR, USD, GBP och CHF.</li>
+        <li>Valutakurserna uppdateras en gång per timme.</li>
+        <li>Du får tillgång till valutornas historik.</li>
+        <li>Vi jobbar med väldigt låga provisioner.</li>
+    </ul>
+
+    <form>
+        <strong>Här kan du</strong>:<br>
+        <input type="radio" name="loginPage" [(ngModel)]="loginPage" value="login">LOGGA IN<br>
+        <input type="radio" name="loginPage" [(ngModel)]="loginPage" value="register">REGGA DIG<br><br>
+    </form>
+
+    <div [ngSwitch]="loginPage">
+        <div *ngSwitchCase="'login'">
+            <h2>Logga in med en befintlig användare</h2>
+            <!-- <p>{{ loginPage }}</p> -->
+            <form>
+                <label for="email">Din epostadress</label><br>
+                <input type="email" name="email" value="" [(ngModel)]="email" required><br>
+                <label for="password">Ditt lösenord</label><br>
+                <input type="password" name="password" value="" [(ngModel)]="password" required><br>
+                <!-- <input type="submit" name="submitLogin" value="Logga in">
+                <input type="submit" name="submitRegister" value="Registrera"> -->
+                <button type="submit" class="btn btn-success" (click)="login()">Login</button>
+            </form>
+            <p>De allra flesta som ägnar sig åt hasardspel blir av med sina pengar. Tänk på detta innan du loggar in.</p>
+            <div class="">
+                {{email}}
+            </div>
+        </div>
+        <div *ngSwitchCase="'register'">
+            <h2>Skapa en ny användare</h2>
+            <!-- <p>{{ loginPage }}</p> -->
+            <form>
+                <label for="email">Din epostadress</label><br>
+                <input type="email" name="email" value="" [(ngModel)]="email" required><br>
+                <label for="password">Ditt lösenord</label><br>
+                <input type="password" name="password" value="" [(ngModel)]="password"><br>
+                <!-- <input type="submit" name="submitLogin" value="Logga in">
+                <input type="submit" name="submitRegister" value="Registrera"> -->
+                <button type="submit" class="btn btn-success" (click)="register()">Register</button>
+            </form>
+            <p>De allra flesta som ägnar sig åt hasardspel blir av med sina pengar. Tänk på detta innan du reggar dig.</p>
+        </div>
+    </div>
+
+</div>
