@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
     // readonly TOTAL_URL = "https://forex-backend.mothermarycomesto.me/total";
     // adat: any;
 
-    constructor(private http: HttpClient, private router: Router, private tokenValue: SharetokenService) {
+    constructor(private http: HttpClient, private router: Router, private tokenValue: SharetokenService, private emailValue: SharetokenService) {
         // this.http.get(this.TOTAL_URL).toPromise().then(data => {
         //     this.adat = data;
         //     console.log("??????????????????????", this.adat);
@@ -52,6 +52,7 @@ export class HomeComponent implements OnInit {
             console.log(this.token);
             this.tokenValue.changeToken(this.token);
             if (this.token.length > 4) {
+                this.emailValue.changeEmail(this.email);
                 this.router.navigate(['profile']);
             }
         });

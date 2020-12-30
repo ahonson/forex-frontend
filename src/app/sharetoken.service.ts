@@ -7,11 +7,17 @@ import { BehaviorSubject } from 'rxjs';
 export class SharetokenService {
 
     private tokenValue = new BehaviorSubject('JWT!');
+    private emailValue = new BehaviorSubject('email!');
     currentToken = this.tokenValue.asObservable();
+    currentEmail = this.emailValue.asObservable();
 
     constructor() { }
 
     changeToken(token: string) {
         this.tokenValue.next(token)
+    }
+
+    changeEmail(email: string) {
+        this.emailValue.next(email)
     }
 }
