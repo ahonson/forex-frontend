@@ -4,16 +4,22 @@
 
     <form>
         Jag vill köpa
-        <select name="sold_currency">
+        <select name="purch_currency" [(ngModel)]="purch_currency">
             <option value="SEK">SEK</option>
-            <option value="USD">USD</option>
+            <option value="CHF">CHF</option>
             <option value="EUR">EUR</option>
             <option value="GBP">GBP</option>
-            <option value="CHF">CHF</option>
+            <option value="USD">USD</option>
         </select>
          och sälja
-        <select name="sold_currency">
+        <select name="sold_currency" [(ngModel)]="sold_currency">
             <option *ngFor="let currency of canbesold" value="{{ currency }}">{{ currency }}</option>
         </select>
     </form>
+
+    <div *ngIf="sold_currency && purch_currency">
+        <h2>Aktuell valutakurs</h2>
+        <p>1 {{ purch_currency }} kostar 0.1 {{ sold_currency }}</p>
+    </div>
+    <!-- <h3>{{ sold }}</h3> -->
 </div>

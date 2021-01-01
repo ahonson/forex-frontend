@@ -17,9 +17,9 @@ export class TransactionComponent implements OnInit {
     email = "";
     transactionPage = "sell";
     purch_amount: any;
-    purch_currency: any;
+    purch_currency = "";
     sold_amount: any;
-    sold_currency: any;
+    sold_currency = "";
     user_id: any;
     token = "";
     userurl = "https://forex-backend.mothermarycomesto.me/users/";
