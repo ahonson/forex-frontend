@@ -1,3 +1,19 @@
-<h1>Handla med valutor</h1>
-<p>Du kan sälja ...</p>
-<p>Du kan köpa ...</p>
+<div ng-app="myApp" ng-controller="myCtrl">
+    <h1>Handla med valutor</h1>
+    <h2>Här kan du välja vad du vill sälja och köpa:</h2>
+
+    <form>
+        Jag vill köpa
+        <select name="sold_currency">
+            <option value="SEK">SEK</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <option value="CHF">CHF</option>
+        </select>
+         och sälja
+        <select name="sold_currency">
+            <option *ngFor="let currency of canbesold" value="{{ currency }}">{{ currency }}</option>
+        </select>
+    </form>
+</div>
