@@ -22,39 +22,45 @@
         <td><strong>{{ adat.chf.toFixed(2) }}</strong> CHF</td>
     </tr>
 </table>
-<h2>Historik</h2>
-<div class="history">
-    <h3>Inbetalningar</h3>
-    <table>
-        <tr>
-            <th>Datum</th>
-            <th>Summa</th>
-        </tr>
-        <tr *ngFor="let payment of payments">
-            <td>{{payment.payment_date}}</td>
-            <td>{{payment.amount}} SEK</td>
-        </tr>
-    </table>
-</div>
-<div class="history">
-    <h3>Transaktioner</h3>
-    <table>
-        <tr>
-            <th>Datum</th>
-            <th>Köpt</th>
-            <th>Sålt</th>
-        </tr>
-        <tr *ngFor="let transaction of transactions">
-            <td>{{transaction.transaction_date}}</td>
-            <td>{{transaction.purch_amount}} {{transaction.purch_currency}}</td>
-            <td>{{transaction.sold_amount}} {{transaction.sold_currency}}</td>
-        </tr>
-    </table>
-</div>
-<div class="payment">
+<div class="payment center">
     <h2>Betala in pengar</h2>
     <form>
         <button type="submit" class="btn btn-success" (click)="addtobalance()">Lägg till </button>
         <input type="number" name="amount" value="" [(ngModel)]="amount" min="1" max="5000" required> SEK
     </form>
+</div>
+<h2 class="center">Historik</h2>
+<div class="center">
+    <div class="history">
+        <h3>Inbetalningar</h3>
+        <table>
+            <tr>
+                <th>Datum</th>
+                <th>Summa</th>
+            </tr>
+            <tr *ngFor="let payment of payments">
+                <td>{{payment.payment_date}}</td>
+                <td>{{payment.amount}} SEK</td>
+            </tr>
+        </table>
+    </div>
+    <div class="history">
+        <h3>Transaktioner</h3>
+        <table>
+            <tr>
+                <th>Datum</th>
+                <th>Köpt</th>
+                <th>Sålt</th>
+            </tr>
+            <tr *ngFor="let transaction of transactions">
+                <td>{{transaction.transaction_date}}</td>
+                <td>{{transaction.purch_amount}} {{transaction.purch_currency}}</td>
+                <td>{{transaction.sold_amount}} {{transaction.sold_currency}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- <p class="clear">X.X</p> -->
+<div class="finalimage">
+    <img class="finalimage" src="../../assets/images/time.png" alt="Transaktion">
 </div>

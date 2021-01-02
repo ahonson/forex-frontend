@@ -4,15 +4,15 @@
         </header>
     </div>
     <main class="appmain">
-        <nav>
+        <nav *ngIf="token">
             <!-- <a class="button" routerLink="/home" routerLinkActive="activebutton">Hem</a> -->
             <a class="button" routerLink="/profile" routerLinkActive="activebutton">Profil</a>
             <a class="button" routerLink="/data" routerLinkActive="activebutton">Data</a>
             <a class="button" routerLink="/transaction" routerLinkActive="activebutton">Handla</a>
-            <a class="button" routerLink="/home" routerLinkActive="activebutton">Logga ut</a>
+            <a class="button" routerLink="/home" routerLinkActive="activebutton" (click)="logout()">Logga ut</a>
         </nav>
         <router-outlet></router-outlet>
     </main>
 </div>
 
-<footer>&#169; Forex Trading - 2020</footer>
+<footer>&#169; Forex Trading - 2021</footer>
