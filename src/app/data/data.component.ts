@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { RATES } from '../exchangerate';
 import { SharetokenService } from "../sharetoken.service";
 
 @Component({
@@ -9,6 +10,7 @@ import { SharetokenService } from "../sharetoken.service";
   styleUrls: ['./data.component.css']
 })
 export class DataComponent implements OnInit {
+    rates = RATES;
 
     readonly TOTAL_URL = "https://forex-backend.mothermarycomesto.me/total";
     adat: any;

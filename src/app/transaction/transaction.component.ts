@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { RATES } from '../exchangerate';
+// import {Pipe, PipeTransform} from '@angular/core';
 import { SharetokenService } from "../sharetoken.service";
 
+// @Pipe({
+//     name: 'getRate',
+//     pure: true
+// })
 @Component({
   selector: 'app-transaction',
   templateUrl: './transaction.component.html',
@@ -10,6 +16,7 @@ import { SharetokenService } from "../sharetoken.service";
 })
 export class TransactionComponent implements OnInit {
 
+    rates = RATES;
     currencies = [];
     currencynames = [];
     canbesold = [];
@@ -43,6 +50,12 @@ export class TransactionComponent implements OnInit {
         });
     }
 
+    getRate(amount, purch, sold) {
+        console.log("//////////////////////");
+        console.log(amount, "*", purch, "*", sold);
+        return (amount * purch / sold).toFixed(2);
+    }
+
     transaction() {
         console.log("halitrans", this.purch_amount);
         this.http.post(this.TRANSACTIONS_URL, {
@@ -57,5 +70,4 @@ export class TransactionComponent implements OnInit {
 
     ngOnInit(): void {
     }
-
 }
