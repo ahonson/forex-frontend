@@ -16,6 +16,7 @@ import { SharetokenService } from "../sharetoken.service";
 })
 export class TransactionComponent implements OnInit {
 
+    amount = 1;
     rates = RATES;
     currencies = [];
     currencynames = [];
@@ -25,7 +26,7 @@ export class TransactionComponent implements OnInit {
     transactionPage = "sell";
     purch_amount: any;
     purch_currency = "";
-    sold_amount: any;
+    sold_amount = 1;
     sold_currency = "";
     user_id: any;
     token = "";
@@ -36,38 +37,47 @@ export class TransactionComponent implements OnInit {
         this.emailValue.currentEmail.subscribe(email => this.email = email);
         this.http.get(this.userurl + this.email).toPromise().then(data => {
             this.adat = data;
+            this.user_id = this.adat.id;
             this.currencies = [this.adat.chf, this.adat.eur, this.adat.gbp, this.adat.sek, this.adat.usd];
             this.currencynames = ["CHF", "EUR", "GBP", "SEK", "USD"];
             for (var i = 0; i < this.currencies.length; i++) {
-                if (this.currencies[i] > 0) {
+                if (this.currencies[i] >= 0.01) {
                     this.canbesold.push(this.currencynames[i]);
                 }
             }
             console.log(this.currencynames);
             console.log(this.canbesold);
-
-
         });
     }
 
     getRate(amount, purch, sold) {
-        console.log("//////////////////////");
-        console.log(amount, "*", purch, "*", sold);
         return (amount * purch / sold).toFixed(2);
     }
 
     transaction() {
-        console.log("halitrans", this.purch_amount);
+        if (this.sold_amount > this.adat[this.sold_currency.toLowerCase()]) {
+            console.log("You cannot sell more than you have.");
+            return;
+        }
+        this.purch_amount = (this.sold_amount / Number(this.getRate(1, this.rates[this.purch_currency.toLowerCase()], this.rates[this.sold_currency.toLowerCase()]))).toFixed(2);
+
         this.http.post(this.TRANSACTIONS_URL, {
             token: this.token,
             user_id: this.user_id,
-            purchamount: this.purch_amount,
-            soldamount: this.sold_amount,
-            soldcurrency: this.sold_currency,
-            purchcurrency: this.purch_currency
+            purch_amount: this.purch_amount,
+            sold_amount: this.sold_amount,
+            sold_currency: this.sold_currency,
+            purch_currency: this.purch_currency
         }).subscribe();
+        this.router.navigate(['data']);
     }
 
     ngOnInit(): void {
+        this.tokenValue.currentToken.subscribe(token => this.token = token);
+        // this.emailValue.currentEmail.subscribe(email => this.email = email);
+        if (this.token.length < 5) {
+            this.router.navigate(['login']);
+            console.log("CRUD.COMPONENT.JS, token:", this.token);
+        }
     }
 }

@@ -18,11 +18,17 @@
     </form>
 
     <div *ngIf="sold_currency && purch_currency">
-        <h2>Kontobalans</h2>
-        <p>Du har x {{ sold_currency }}. Du kan köpa högst y {{ purch_currency }}.</p>
         <h2>Aktuell valutakurs</h2>
         <p>1 {{ purch_currency }} kostar {{ getRate(1, rates[purch_currency | lowercase], rates[sold_currency | lowercase]) }} {{ sold_currency }}</p>
-        <!-- <h3>{{ getRate(1, rates[purch_currency | lowercase], rates[sold_currency | lowercase]) }}</h3> -->
+        <h2>Kontobalans</h2>
+        <p>Du har {{ adat[sold_currency | lowercase].toFixed(2) }} {{ sold_currency }}. Du kan köpa högst {{ (adat[sold_currency | lowercase] / getRate(1, rates[purch_currency | lowercase], rates[sold_currency | lowercase])).toFixed(2) }} {{ purch_currency }}.</p>
+        <h2>Transaktion</h2>
+        <div class="payment">
+            <form class="" action="index.html" method="post">
+                <button type="submit"  class="btn btn-success" (click)="transaction()">SÄLJ </button>
+                <input type="number" name="amount" [ngValue]="1" [(ngModel)]="sold_amount" min="1" max="{{ adat[sold_currency | lowercase] }}" required> {{ sold_currency }} för {{ ((((adat[sold_currency | lowercase] / getRate(1, rates[purch_currency | lowercase], rates[sold_currency | lowercase])).toFixed(2)) * sold_amount) / adat[sold_currency | lowercase]).toFixed(2) }} {{ purch_currency }}.
+            </form>
+        </div>
     </div>
     <!-- <h3>{{ myData | getRate: 1 : 'sek' : 'eur' }}</h3> -->
 </div>
