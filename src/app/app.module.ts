@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { CurrencyService } from "./currency.service";
 import { SharetokenService } from "./sharetoken.service";
 
 import { AppComponent } from './app.component';
@@ -33,7 +34,7 @@ import { TransactionComponent } from './transaction/transaction.component';
         {path: '**', component: PageNotFoundComponent} // this route has to come last
     ]),
   ],
-  providers: [SharetokenService],
+  providers: [SharetokenService, CurrencyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
