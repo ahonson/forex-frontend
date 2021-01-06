@@ -50,7 +50,7 @@ export class ProfileComponent implements OnInit {
         this.tokenValue.currentToken.subscribe(token => this.token = token);
         this.emailValue.currentEmail.subscribe(email => this.email = email);
         if (this.token.length < 5) {
-            this.router.navigate(['login']);
+            this.router.navigate(['home']);
             console.log("CRUD.COMPONENT.JS, token:", this.token);
         }
     }

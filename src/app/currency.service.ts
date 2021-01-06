@@ -13,8 +13,8 @@ import {io} from 'socket.io-client/build/index';
 import { Observable } from 'rxjs';
 
 export class CurrencyService {
-    private url = 'http://localhost:3000';
-    // private url = 'https://socket-server.mothermarycomesto.me/';
+    // private url = 'http://localhost:3000';
+    private url = 'https://forex-socket.mothermarycomesto.me/';
     private socket;
 
     constructor() {

@@ -12,12 +12,16 @@ import { SharetokenService } from "../sharetoken.service";
 })
 export class DataComponent implements OnInit {
     rates = RATES;
+    token = "";
+    email = "xx";
     // earlierMessages: string[] = [];
-    currentValues: any;
+    currentValues = "";
     readonly TOTAL_URL = "https://forex-backend.mothermarycomesto.me/total";
     adat: any;
 
-    constructor(private http: HttpClient, private router: Router, private tokenValue: SharetokenService, private currencyService: CurrencyService) {
+    constructor(private http: HttpClient, private router: Router, private tokenValue: SharetokenService, private emailValue: SharetokenService, private currencyService: CurrencyService) {
+        console.log("WWWWWWWWWWWWWWWWWWWWWWWWWWW");
+
         this.currencyService.
         currentRates()
         .subscribe((message) => {
@@ -42,10 +46,15 @@ export class DataComponent implements OnInit {
     // ngOnInit() {
     // }
     //
-    ngOnInit() {
-        this.currencyService
-        .currentRates()
-        .subscribe((message) => {
+    ngOnInit(): void {
+        this.tokenValue.currentToken.subscribe(token => this.token = token);
+        this.emailValue.currentEmail.subscribe(email => this.email = email);
+        if (this.token.length < 5) {
+            this.router.navigate(['home']);
+            console.log("CRUD.COMPONENT.JS, token:", this.token);
+        }
+
+        this.currencyService.currentRates().subscribe((message) => {
             this.currentValues = message;
         });
     }
