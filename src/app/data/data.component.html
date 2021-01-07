@@ -6,6 +6,28 @@
 
 <h2>De senaste transaktionerna</h2>
 
-<p>För närvarande har vi {{ adat.nrofusers }} användare. Våra användare har hittills gjort {{ adat.nroftransactions }} transaktioner och {{ adat.nrofpayments }} inbetalningar.</p>
+<p>För närvarande har vi <strong>{{ adat.nrofusers }} användare</strong>. Våra användare har hittills gjort <strong>{{ adat.nroftransactions }} transaktioner</strong> och <strong>{{ adat.nrofpayments }} inbetalningar</strong>.</p>
 
-<p>Current: {{ currentValues }}</p>
+<div class="chart-wrapper">
+    <canvas baseChart
+    [datasets]="barChartData"
+    [labels]="barChartLabels"
+    [options]="barChartOptions"
+    [plugins]="barChartPlugins"
+    [legend]="barChartLegend"
+    [chartType]="barChartType"
+    [colors]="barChartColors">
+  </canvas>
+</div>
+
+<div class="chart-wrapper">
+    <canvas baseChart
+        [datasets]="lineChartData"
+        [labels]="lineChartLabels"
+        [options]="lineChartOptions"
+        [colors]="lineChartColors"
+        [legend]="lineChartLegend"
+        [chartType]="lineChartType"
+        [plugins]="lineChartPlugins">
+    </canvas>
+</div>

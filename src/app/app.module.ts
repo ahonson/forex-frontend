@@ -13,6 +13,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { DataComponent } from './data/data.component';
 import { TransactionComponent } from './transaction/transaction.component';
 
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +27,7 @@ import { TransactionComponent } from './transaction/transaction.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ChartsModule,
     RouterModule.forRoot([
         {path: 'home', component: HomeComponent},
         {path: '', redirectTo: '/home', pathMatch: 'full'},
