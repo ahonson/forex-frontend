@@ -1,7 +1,7 @@
 export var RATES = {
-    gbp: 1,
-    sek: 0.09,
-    usd: 0.73,
-    eur: 0.89,
-    chf: 0.82
+    gbp: 11.13,
+    sek: 1,
+    usd: 8.20,
+    eur: 10.06,
+    chf: 9.32
 }

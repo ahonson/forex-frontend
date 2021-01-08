@@ -15,7 +15,8 @@ import { SharetokenService } from "../sharetoken.service";
   styleUrls: ['./transaction.component.css']
 })
 export class TransactionComponent implements OnInit {
-
+    readonly TOTAL_URL = "https://forex-backend.mothermarycomesto.me/total";
+    adattotal: any;
     amount = 1;
     rates = RATES;
     currencies = [];
@@ -47,6 +48,10 @@ export class TransactionComponent implements OnInit {
             }
             console.log(this.currencynames);
             console.log(this.canbesold);
+        });
+
+        this.http.get(this.TOTAL_URL).toPromise().then(data => {
+            this.adattotal = data;
         });
     }
 

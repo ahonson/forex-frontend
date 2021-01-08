@@ -3,10 +3,10 @@
 <ul>
     <li><strong>Din epost</strong>: {{ adat.email }}</li>
     <li><strong>Kontot skapades</strong>: {{ adat.created }}</li>
-    <li><strong>Dina valutor</strong></li>
+    <li class="bigscreen"><strong>Dina valutor</strong></li>
 </ul>
 
-<table>
+<table class="bigscreen">
     <tr>
         <th><img src="../../assets/images/flag_se.png" alt="Swedish flag"></th>
         <th><img src="../../assets/images/flag_eu.png" alt="EU flag"></th>
@@ -22,6 +22,40 @@
         <td><strong>{{ adat.chf.toFixed(2) }}</strong> CHF</td>
     </tr>
 </table>
+
+<table class="smallscreen">
+    <tr>
+        <th>Flagga</th>
+        <th>Belopp</th>
+        <th>Valuta</th>
+    </tr>
+    <tr>
+        <td><img src="../../assets/images/flag_se.png" alt="Swedish flag"></td>
+        <td><strong>{{ adat.sek.toFixed(2) }}</strong></td>
+        <td>SEK</td>
+    </tr>
+    <tr>
+        <td><img src="../../assets/images/flag_eu.png" alt="EU flag"></td>
+        <td><strong>{{ adat.eur.toFixed(2) }}</strong></td>
+        <td>EUR</td>
+    </tr>
+    <tr>
+        <td><img src="../../assets/images/flag_uk.png" alt="British flag"></td>
+        <td><strong>{{ adat.gbp.toFixed(2) }}</strong></td>
+        <td>GBP</td>
+    </tr>
+    <tr>
+        <td><img src="../../assets/images/flag_us.png" alt="US flag"></td>
+        <td><strong>{{ adat.usd.toFixed(2) }}</strong></td>
+        <td>USD</td>
+    </tr>
+    <tr>
+        <td><img src="../../assets/images/flag_ch.png" alt="Swiss flag"></td>
+        <td><strong>{{ adat.chf.toFixed(2) }}</strong></td>
+        <td>CHF</td>
+    </tr>
+</table>
+
 <div class="payment center">
     <h2>Betala in pengar</h2>
     <form>

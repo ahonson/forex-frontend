@@ -1,12 +1,16 @@
-<h1>Aktuella valutakurser</h1>
-<p>{{ rates.gbp }} GBP = {{ rates.sek }} SEK</p>
+<h1>Aktuella kurser</h1>
+<!-- <p>{{ rates.gbp }} GBP = {{ rates.sek }} SEK</p>
 <p>{{ rates.gbp }} GBP = {{ rates.usd }} USD</p>
 <p>{{ rates.gbp }} GBP = {{ rates.eur }} EUR</p>
-<p>{{ rates.gbp }} GBP = {{ rates.chf }} CHF</p>
+<p>{{ rates.gbp }} GBP = {{ rates.chf }} CHF</p> -->
 
-<h2>De senaste transaktionerna</h2>
+<p>1 GBP = {{ rates.gbp }} SEK</p>
+<p>1 USD = {{ rates.usd }} SEK</p>
+<p>1 EUR = {{ rates.eur }} SEK</p>
+<p>1 CHF = {{ rates.chf }} SEK</p>
 
-<p>För närvarande har vi <strong>{{ adat.nrofusers }} användare</strong>. Våra användare har hittills gjort <strong>{{ adat.nroftransactions }} transaktioner</strong> och <strong>{{ adat.nrofpayments }} inbetalningar</strong>.</p>
+
+<h2>Live infographic</h2>
 
 <div class="chart-wrapper">
     <canvas baseChart

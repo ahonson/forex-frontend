@@ -18,6 +18,11 @@ th img {
     max-width: 200px;
 }
 
+td img {
+    height: 50px;
+    width: 75px;
+}
+
 .payment {
     clear: both;
     padding-top: 20px;
@@ -44,7 +49,7 @@ form input {
 
 .finalimage {
     clear: both;
-    max-width: 500px;
+    max-width: 300px;
     margin: auto;
 }
 
@@ -53,4 +58,17 @@ form input {
     margin-right: auto;
     text-align: center;
     max-width: 700px;
+}
+
+.smallscreen {
+    display: none;
+}
+
+@media screen and (max-width: 900px) {
+    .bigscreen {
+        display: none;
+    }
+    .smallscreen {
+        display: table;
+    }
 }

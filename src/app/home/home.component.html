@@ -1,20 +1,20 @@
 <div ng-app="myApp" ng-controller="myCtrl">
-    <h1>Varmt välkommen till Forex trading!!!</h1>
+    <h1>Forex trading</h1>
 
-    <h2>Varför ska du använda våra tjänster?</h2>
+    <h2>Våra tjänster</h2>
     <ul>
-        <li>Du som registrerar dig får ett startkapital på 1000 kr.</li>
-        <li>Som inloggad användare kan du göra ytterligare inbetalningar.</li>
-        <li>Hos oss kan du köpa och sälja SEK, EUR, USD, GBP och CHF.</li>
-        <li>Valutakurserna uppdateras kontinuerligt.</li>
-        <li>Du får tillgång till valutornas historik.</li>
-        <li>Vi jobbar utan provisioner.</li>
+        <li>Vi ger dig ett <strong>startkapital</strong> på 1000 kr och sedan kan du göra ytterligare inbetalningar.</li>
+        <li>Du handlar med SEK, EUR, USD, GBP och CHF <strong>utan provisioner</strong>.</li>
+        <li>Valutakurserna <strong>uppdateras</strong> var femte sekund.</li>
+        <li>Du får tillgång till valutornas <strong>historik</strong>.</li>
     </ul>
 
     <h2>Här kan du</h2>
     <form>
-        <input type="radio" name="loginPage" [(ngModel)]="loginPage" value="login">LOGGA IN<br>
-        <input type="radio" name="loginPage" [(ngModel)]="loginPage" value="register">REGGA DIG<br><br>
+        <input id="rad1" type="radio" name="loginPage" [(ngModel)]="loginPage" value="login">
+        <label class="radlabel" for="rad1">LOGGA IN</label><br>
+        <input id="rad2" type="radio" name="loginPage" [(ngModel)]="loginPage" value="register">
+        <label class="radlabel" for="rad2">REGGA DIG</label><br><br>
     </form>
 
     <div [ngSwitch]="loginPage">
@@ -33,7 +33,7 @@
             <p>De allra flesta som ägnar sig åt hasardspel blir av med sina pengar. Tänk på detta innan du loggar in.</p>
         </div>
         <div *ngSwitchCase="'register'">
-            <h2>Skapa en ny användare</h2>
+            <h3>Skapa en ny användare</h3>
             <!-- <p>{{ loginPage }}</p> -->
             <form>
                 <label for="email">Din epostadress</label><br>

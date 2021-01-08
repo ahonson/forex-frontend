@@ -14,8 +14,8 @@ import { SharetokenService } from "../sharetoken.service";
 })
 
 export class DataComponent {
-    readonly TOTAL_URL = "https://forex-backend.mothermarycomesto.me/total";
-    adat: any;
+    // readonly TOTAL_URL = "https://forex-backend.mothermarycomesto.me/total";
+    // adat: any;
     token = "";
     email = "xx";
     rates = RATES;
@@ -79,9 +79,9 @@ export class DataComponent {
           //     this.currentValues = message;
           // });
 
-          this.http.get(this.TOTAL_URL).toPromise().then(data => {
-              this.adat = data;
-          });
+          // this.http.get(this.TOTAL_URL).toPromise().then(data => {
+          //     this.adat = data;
+          // });
       }
 
       ngOnInit(): void {
