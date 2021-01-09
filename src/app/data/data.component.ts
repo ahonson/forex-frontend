@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
-import { RATES } from '../exchangerate';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CurrencyService } from '../currency.service';
@@ -14,11 +13,10 @@ import { SharetokenService } from "../sharetoken.service";
 })
 
 export class DataComponent {
-    // readonly TOTAL_URL = "https://forex-backend.mothermarycomesto.me/total";
-    // adat: any;
+    earlierMessages: string[] = [];
+    currentValues = [9.32, 10.06, 11.13, 8.20];
     token = "";
     email = "xx";
-    rates = RATES;
     barChartOptions: ChartOptions = {
         responsive: true,
         scales : {
@@ -30,15 +28,15 @@ export class DataComponent {
           }]
         }
     };
-  barChartLabels: Label[] = ['CHF', 'EUR', 'GBP', 'USD'];
-  barChartType: ChartType = 'bar';
-  barChartLegend = true;
-  barChartPlugins = [];
+    barChartLabels: Label[] = ['CHF', 'EUR', 'GBP', 'USD'];
+    barChartType: ChartType = 'bar';
+    barChartLegend = true;
+    barChartPlugins = [];
 
-  barChartData: ChartDataSets[] = [
-    { data: [9.32, 10.06, 11.13, 8.20], label: 'Major currencies based on SEK' }
-  ];
-  barChartColors: Color[] = [
+    barChartData: ChartDataSets[] = [
+        { data: this.currentValues, label: 'Major currencies based on SEK' }
+    ];
+    barChartColors: Color[] = [
           {
               borderColor: 'black',
               backgroundColor: ['#f70000', '#00208f', '#f6f6f6', '#030303'],
@@ -54,6 +52,14 @@ export class DataComponent {
 
       lineChartOptions = {
         responsive: true,
+        scales : {
+          yAxes: [{
+             ticks: {
+                max : 13,
+                min: 6
+              }
+          }]
+        }
       };
 
       lineChartColors: Color[] = [
@@ -67,21 +73,29 @@ export class DataComponent {
       lineChartPlugins = [];
       lineChartType = 'line';
 
-      constructor(private http: HttpClient, private router: Router, private tokenValue: SharetokenService, private emailValue: SharetokenService) {
+      constructor(private http: HttpClient, private router: Router, private tokenValue: SharetokenService, private emailValue: SharetokenService, private currencyService: CurrencyService) {
 
-          // this.currencyService.
-          // currentRates()
-          // .subscribe((message) => {
-          //     console.log("..........................");
-          //     console.log(typeof message);
-          //     console.log(message);
-          //     console.log("::::::::::::::::::::::::::");
-          //     this.currentValues = message;
-          // });
+          this.currencyService.
+          currentRates()
+          .subscribe((message) => {
+              console.log(".........XXX.................");
+              console.log(typeof message);
+              console.log(message);
+              console.log("::::::::::::XXX::::::::::::::");
+              this.currentValues = [message[0]["chf"], message[0]["eur"], message[0]["gbp"], message[0]["usd"]];
+              this.barChartData[0]["data"] = this.currentValues;
+              var tempdata = [];
+              var templabels = [];
 
-          // this.http.get(this.TOTAL_URL).toPromise().then(data => {
-          //     this.adat = data;
-          // });
+              for (var i = message.length -1; i >= 0; i--) {
+                  tempdata.push(message[i]["chf"]);
+                  templabels.push(message[i]["rate_date"].substr(11));
+              }
+              this.lineChartData = [{ data: tempdata, label: 'CHF vs SEK over time'}];
+              console.log(this.lineChartData["data"]);
+
+              this.lineChartLabels = templabels;
+          });
       }
 
       ngOnInit(): void {
@@ -91,8 +105,5 @@ export class DataComponent {
               this.router.navigate(['home']);
               console.log("CRUD.COMPONENT.JS, token:", this.token);
           }
-          // this.currencyService.currentRates().subscribe((message) => {
-          //     this.currentValues = message;
-          // });
       }
 }

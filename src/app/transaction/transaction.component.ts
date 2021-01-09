@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { RATES } from '../exchangerate';
 // import {Pipe, PipeTransform} from '@angular/core';
+import { CurrencyService } from '../currency.service';
 import { SharetokenService } from "../sharetoken.service";
 
 // @Pipe({
@@ -34,7 +35,7 @@ export class TransactionComponent implements OnInit {
     userurl = "https://forex-backend.mothermarycomesto.me/users/";
     readonly TRANSACTIONS_URL = "https://forex-backend.mothermarycomesto.me/transactions";
 
-    constructor(private http: HttpClient, private router: Router, private tokenValue: SharetokenService, private emailValue: SharetokenService) {
+    constructor(private http: HttpClient, private router: Router, private tokenValue: SharetokenService, private emailValue: SharetokenService, private currencyService: CurrencyService) {
         this.emailValue.currentEmail.subscribe(email => this.email = email);
         this.http.get(this.userurl + this.email).toPromise().then(data => {
             this.adat = data;
@@ -52,6 +53,23 @@ export class TransactionComponent implements OnInit {
 
         this.http.get(this.TOTAL_URL).toPromise().then(data => {
             this.adattotal = data;
+        });
+
+
+        this.currencyService.
+        currentRates()
+        .subscribe((message) => {
+            console.log(".........XXX.................");
+            console.log(typeof message);
+            console.log(message);
+            console.log("::::::::::::XXX::::::::::::::");
+            this.rates = {
+                gbp: message[0]["gbp"],
+                usd: message[0]["usd"],
+                eur: message[0]["eur"],
+                chf: message[0]["chf"],
+                sek: 1
+            };
         });
     }
 

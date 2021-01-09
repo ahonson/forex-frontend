@@ -1,14 +1,8 @@
 <h1>Aktuella kurser</h1>
-<!-- <p>{{ rates.gbp }} GBP = {{ rates.sek }} SEK</p>
-<p>{{ rates.gbp }} GBP = {{ rates.usd }} USD</p>
-<p>{{ rates.gbp }} GBP = {{ rates.eur }} EUR</p>
-<p>{{ rates.gbp }} GBP = {{ rates.chf }} CHF</p> -->
-
-<p>1 GBP = {{ rates.gbp }} SEK</p>
-<p>1 USD = {{ rates.usd }} SEK</p>
-<p>1 EUR = {{ rates.eur }} SEK</p>
-<p>1 CHF = {{ rates.chf }} SEK</p>
-
+<p>1 CHF = {{ currentValues[0] }} SEK</p>
+<p>1 EUR = {{ currentValues[1] }} SEK</p>
+<p>1 GBP = {{ currentValues[2] }} SEK</p>
+<p>1 USD = {{ currentValues[3] }} SEK</p>
 
 <h2>Live infographic</h2>
 
@@ -34,4 +28,11 @@
         [chartType]="lineChartType"
         [plugins]="lineChartPlugins">
     </canvas>
+</div>
+
+<h2>Meddelanden</h2>
+<div id="all-messages" class="all-messages">
+    <p *ngFor="let message of currentValues">
+        {{message}}
+    </p>
 </div>
