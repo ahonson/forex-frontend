@@ -69,6 +69,7 @@ export class HomeComponent implements OnInit {
             email: this.email,
             password: this.password
         }).subscribe();
+        this.router.navigate(['profile']);
     }
 
     ngOnInit() {

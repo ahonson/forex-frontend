@@ -44,6 +44,7 @@ export class ProfileComponent implements OnInit {
             token: this.token,
             user_id: this.user_id
         }).subscribe();
+        this.router.navigate(['data']);
     }
 
     ngOnInit(): void {

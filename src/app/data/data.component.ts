@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
 import { HttpClient } from '@angular/common/http';
@@ -12,8 +12,9 @@ import { SharetokenService } from "../sharetoken.service";
   styleUrls: ['./data.component.css']
 })
 
-export class DataComponent {
-    earlierMessages: string[] = [];
+export class DataComponent implements OnInit {
+    // earlierMessages: string[] = [];
+    chosen_currency = "chf";
     currentValues = [9.32, 10.06, 11.13, 8.20];
     token = "";
     email = "xx";
@@ -45,7 +46,7 @@ export class DataComponent {
 
 
       lineChartData: ChartDataSets[] = [
-        { data: [9.32, 9.41, 9.63, 9.48, 9.56, 9.38, 9.39, 9.26, 9.23, 9.15], label: 'CHF vs SEK over time' },
+        { data: [9.32, 9.41, 9.63, 9.48, 9.56, 9.38, 9.39, 9.26, 9.23, 9.15], label: this.chosen_currency.toUpperCase() + ' vs SEK over time' },
       ];
 
       lineChartLabels: Label[] = ['12:06:00', '12:06:05', '12:06:10', '12:06:15', '12:06:20', '12:06:25', '12:06:30', "12:06:35", '12:06:40', "12:06:45"];
@@ -88,10 +89,10 @@ export class DataComponent {
               var templabels = [];
 
               for (var i = message.length -1; i >= 0; i--) {
-                  tempdata.push(message[i]["chf"]);
+                  tempdata.push(message[i][this.chosen_currency]);
                   templabels.push(message[i]["rate_date"].substr(11));
               }
-              this.lineChartData = [{ data: tempdata, label: 'CHF vs SEK over time'}];
+              this.lineChartData = [{ data: tempdata, label: this.chosen_currency.toUpperCase() + ' vs SEK over time'}];
               console.log(this.lineChartData["data"]);
 
               this.lineChartLabels = templabels;
