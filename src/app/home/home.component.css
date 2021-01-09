@@ -19,3 +19,10 @@ button[type=submit] {
     font-size: 24px;
     /* font-weight: bold; */
 }
+
+.danger {
+    background-color: #8b0000;
+    color: #fff;
+    display: inline;
+    /* width: 300px; */
+}

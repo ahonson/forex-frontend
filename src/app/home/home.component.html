@@ -20,28 +20,24 @@
     <div [ngSwitch]="loginPage">
         <div *ngSwitchCase="'login'">
             <h3>Logga in med en befintlig användare</h3>
-            <!-- <p>{{ loginPage }}</p> -->
+            <p class="danger">{{ errormsg }}</p>
             <form>
                 <label for="email">Din epostadress</label><br>
                 <input type="email" name="email" value="" [(ngModel)]="email" required><br>
                 <label for="password">Ditt lösenord</label><br>
                 <input type="password" name="password" value="" [(ngModel)]="password" required><br>
-                <!-- <input type="submit" name="submitLogin" value="Logga in">
-                <input type="submit" name="submitRegister" value="Registrera"> -->
                 <button type="submit" class="btn btn-success" (click)="login()">Login</button>
             </form>
             <p>De allra flesta som ägnar sig åt hasardspel blir av med sina pengar. Tänk på detta innan du loggar in.</p>
         </div>
         <div *ngSwitchCase="'register'">
             <h3>Skapa en ny användare</h3>
-            <!-- <p>{{ loginPage }}</p> -->
+            <p class="danger">{{ errormsg2 }}</p>
             <form>
                 <label for="email">Din epostadress</label><br>
                 <input type="email" name="email" value="" [(ngModel)]="email" required><br>
                 <label for="password">Ditt lösenord</label><br>
                 <input type="password" name="password" value="" [(ngModel)]="password"><br>
-                <!-- <input type="submit" name="submitLogin" value="Logga in">
-                <input type="submit" name="submitRegister" value="Registrera"> -->
                 <button type="submit" class="btn btn-success" (click)="register()">Register</button>
             </form>
             <p>De allra flesta som ägnar sig åt hasardspel blir av med sina pengar. Tänk på detta innan du reggar dig.</p>

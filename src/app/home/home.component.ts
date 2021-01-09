@@ -9,13 +9,15 @@ import { SharetokenService } from "../sharetoken.service";
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
     submitted = false;
     loginPage = "login";
     email = "";
     password = "";
     response: any;
     token: string;
+    errormsg = "";
+    errormsg2 = "";
+    readonly USERS_URL = "https://forex-backend.mothermarycomesto.me/users/";
     readonly LOGIN_URL = "https://forex-backend.mothermarycomesto.me/login";
     readonly REGISTER_URL = "https://forex-backend.mothermarycomesto.me/register";
     // readonly TOTAL_URL = "https://forex-backend.mothermarycomesto.me/total";
@@ -54,6 +56,8 @@ export class HomeComponent implements OnInit {
             if (this.token.length > 4) {
                 this.emailValue.changeEmail(this.email);
                 this.router.navigate(['profile']);
+            } else {
+                this.errormsg = "Ogiltiga inloggningsuppgifter.";
             }
         });
     }
@@ -65,11 +69,17 @@ export class HomeComponent implements OnInit {
         console.log(this.email);
         console.log(this.password);
 
-        this.http.post(this.REGISTER_URL, {
-            email: this.email,
-            password: this.password
-        }).subscribe();
-        this.router.navigate(['profile']);
+        this.http.get(this.USERS_URL + this.email).toPromise().then(data => {
+            if (data["id"]) {
+                this.errormsg2 = "Denna epostadress är redan registrerad.";
+            } else {
+                this.http.post(this.REGISTER_URL, {
+                    email: this.email,
+                    password: this.password
+                }).subscribe(data => {});
+                this.router.navigate(['profile']);
+            }
+        });
     }
 
     ngOnInit() {
