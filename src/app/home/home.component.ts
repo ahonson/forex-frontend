@@ -79,6 +79,7 @@ export class HomeComponent implements OnInit {
                 }).subscribe(data => {});
                 this.router.navigate(['home']);
                 this.loginPage = "login";
+                this.errormsg = "";
             }
         });
     }
