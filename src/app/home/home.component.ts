@@ -77,7 +77,8 @@ export class HomeComponent implements OnInit {
                     email: this.email,
                     password: this.password
                 }).subscribe(data => {});
-                this.router.navigate(['profile']);
+                this.router.navigate(['home']);
+                this.loginPage = "login";
             }
         });
     }
